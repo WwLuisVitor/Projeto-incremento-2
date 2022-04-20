@@ -6,6 +6,7 @@ tipo=['reclamaçao','sugestão','elogio']
 problema=['não tem agua no bebedouro','nao tem luz na sala']
 nome=['Pedro','daniel']
 while opçao !=7:
+ print()
  print('Ouvidoria faculdade CBA')
  print()
  print('1) Listar todas as manifestações')
@@ -16,15 +17,18 @@ while opçao !=7:
  print('6) Pesquisar protocolo por número')
  print('7) Sair')
  opçao=int(input('digite sua opçao '))
+ print()
  if opçao>7 or opçao<1:
      print('opção invalida')
  if opçao==1:
      print('Essas sao todas as manifestações disponíveis no momento')
+     print()
      for manifestaçao in manifestaçoes: 
       listasaida=manifestaçao.replace('#',' - ')
       print('Código '+ listasaida)
  elif opçao==2:
      print('Essas sao todas as sugestões no momento')
+     print()
      for manifestaçao in manifestaçoes: 
        manifestaçaoquebrado=manifestaçao.split('#')
        if tipo[1]==manifestaçaoquebrado[2]:
@@ -35,6 +39,7 @@ while opçao !=7:
           print()
  elif opçao==3:
      print('Essas sao as reclamações no momento')
+     print()
      for reclamaçao in manifestaçoes:
          reclamaçaoquebrado=reclamaçao.split('#')
          if tipo[0]==reclamaçaoquebrado[2]:
@@ -45,6 +50,7 @@ while opçao !=7:
              print()
  elif opçao==4:
      print('Esses são os elogios até agora')
+     print()
      for elogio in manifestaçoes:
          elogioquebrado=elogio.split('#')
          if tipo[2]==elogioquebrado[2]:
