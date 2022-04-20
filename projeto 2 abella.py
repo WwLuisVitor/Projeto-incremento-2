@@ -1,6 +1,5 @@
 opçao=0
 tipop=0
-pesquisa=8
 manifestaçoes=['1#luis#reclamaçao#sem agua no bebedouro','2#pedro#sugestão#intervalo para lanche','3#bruno#elogio#excelente professor']
 protocolo=len(manifestaçoes)+1
 tipo=['reclamaçao','sugestão','elogio']
@@ -43,7 +42,7 @@ while opçao !=7:
              print('Código', end='')
              for i in reclamaçaoquebrado:
                  print('- '+i, end=' ')
-         print()
+             print()
  elif opçao==4:
      print('Esses são os elogios até agora')
      for elogio in manifestaçoes:
@@ -53,7 +52,7 @@ while opçao !=7:
              print('Código',end='')
              for i in elogioquebrado:
                  print('- '+i,end=' ')
-         print()
+             print()
  elif opçao==5:
     protocolo=len(manifestaçoes)+1
     name=input('digite seu nome ')
@@ -64,19 +63,21 @@ while opçao !=7:
     descriçaoproblema=input('descreva a manifestação ')
     dadosproblema=str(protocolo)+'#'+name+'#'+tipo[tipop-1]+'#'+descriçaoproblema
     manifestaçoes.append(dadosproblema)
-    print(manifestaçoes)
  
  elif opçao==6:
+     pesquisa=-1
      tamanhoprotocolo=len(manifestaçoes)
-     while pesquisa <=0 or pesquisa>=tamanhoprotocolo:
+     while pesquisa <=0 or pesquisa>tamanhoprotocolo:
          pesquisa=int(input('Digite o numero do protocolo para pesquisar a respeito do mesmo: '))
          if pesquisa <= 0 or pesquisa > (tamanhoprotocolo):
              print('Não foi encontrado nenhum protocolo com esse número.')
              print()
      pesquisadigitado=pesquisa
-     for pesquisa in manifestaçoes:
-         pesquisaquebrado=pesquisa.split('#')
+     for pesquisatemp in manifestaçoes:
+         pesquisaquebrado=pesquisatemp.split('#')
          if int(pesquisaquebrado[0])==(pesquisadigitado):
              print('Código',end='')
              for i in pesquisaquebrado:
                  print('- '+i,end=' ')
+ else:
+     print('Saindo...')
