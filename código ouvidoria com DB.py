@@ -5,7 +5,7 @@ data=[]
 typelist=['Reclamation','Suggestion','Compliment']
 while option !=7:
  print()
- print('Ouvidoria faculdade CBA')# Começo do Menu
+ print('Ouvidoria faculdade CBA')# Menu start
  print()
  print('1) List all manifestations')
  print('2) List all suggestions')
@@ -13,12 +13,12 @@ while option !=7:
  print('4) List all Compliments')
  print('5) Send a new manifestation')
  print('6) Search for a manifestation with protocol numbem')
- print('7) Leave')# Fim do Menu
+ print('7) Leave')# End of the menu
  option=int(input('Type your option '))
  print()
  if option>7 or option<1:
      print('invalid option')
- if option==1: # Listar todas as manifestações disponiveis
+ if option==1: # Listing all manifestations
       print('These are all the manifestations on our system at the moment')
       print()
       listall="SELECT * FROM clientdata"
@@ -26,7 +26,7 @@ while option !=7:
       for i in result:
           itotal=str(i[0])+' - '+i[1]+' - '+i[2]+' - '+i[3]
           print (itotal)
- if option==2:
+ if option==2: # Listing all suggestions
      print('These are all the suggestions on our system at the moment')
      print()
      listall="SELECT * FROM clientdata WHERE manifesttype='Suggestion'"
@@ -34,7 +34,7 @@ while option !=7:
      for i in result:
          itotal=str(i[0])+' - '+i[2]+' - '+i[3]
          print(itotal)
- if option==3:
+ if option==3: # Listing all reclamations
      print('These are all the reclamations on our system at the moment')
      print()
      listall="SELECT * FROM clientdata WHERE manifesttype='Reclamation'"
@@ -42,7 +42,7 @@ while option !=7:
      for i in result:
          itotal=str(i[0])+' - '+i[2]+' - '+i[3]
          print(itotal)
- if option==4:
+ if option==4: # Listing all compliments
      print('These are all the compliments on our system at the moment')
      print()
      listall="SELECT * FROM clientdata WHERE manifesttype='Compliment'"
@@ -50,7 +50,7 @@ while option !=7:
      for i in result:
          itotal=str(i[0])+' - '+i[2]+' - '+i[3]
          print(itotal)
- if option==5:
+ if option==5: # Sending a new manifestation to the database
         type=-1   
         name=input('type your name: ')
         while type<1 or type>3:
@@ -64,9 +64,9 @@ while option !=7:
  if option==6:
      listall="SELECT protocol FROM clientdata"
      protocols=listarBancoDados(open,listall)
-     search=-1 # Criando uma variável para garantir o inicio do while.
+     search=-1 # Creating a variable to ensure the while loop
      protocollenght=len(protocols)
-     while search <=0 or search>protocollenght: # Requisitando o número do protocolo à ser pesquisado garantindo que o cliente irá inserir um valor válido através da utilização do while.
+     while search <=0 or search>protocollenght:
          search=int(input('Digite o numero do protocolo para pesquisar a respeito do mesmo: '))
          if search <= 0 or search > (protocollenght):
              print('Não foi encontrado nenhum protocolo com esse número.')
