@@ -1,7 +1,6 @@
 from operacoesbd import *
-open=abrirBancoDados('localhost','Luis','Luis072212','ouvidoria')
+open=abrirBancoDados('localhost','Luis','Luis072212','ouvidoria') # Opening the database
 option=-1
-data=[]
 typelist=['Reclamation','Suggestion','Compliment']
 while option !=7:
  print()
@@ -61,15 +60,15 @@ while option !=7:
         insertdb="insert into clientdata(manifesttype,username,manifestdescription) values(%s, %s, %s)"
         informations=(typelist[type-1],name,description)
         insertNoBancoDados(open,insertdb,informations)
- if option==6:
+ if option==6: # Searching a manifestation using protocol number
      listall="SELECT protocol FROM clientdata"
      protocols=listarBancoDados(open,listall)
      search=-1 # Creating a variable to ensure the while loop
      protocollenght=len(protocols)
      while search <=0 or search>protocollenght:
-         search=int(input('Digite o numero do protocolo para pesquisar a respeito do mesmo: '))
+         search=int(input('Type the protocol number to search it: '))
          if search <= 0 or search > (protocollenght):
-             print('Não foi encontrado nenhum protocolo com esse número.')
+             print('There is no manifestation with this protocol number, try again.')
              break
      searchusingprotocol="SELECT * FROM clientdata WHERE protocol="+str(search)
      resultsearch=listarBancoDados(open,searchusingprotocol)
@@ -77,3 +76,4 @@ while option !=7:
          itotal=str(i[0])+' - '+i[1]+' - '+i[2]+' - '+i[3]
          print(itotal)
 print('Leaving...')
+encerrarBancoDados(open) # Closing the database
